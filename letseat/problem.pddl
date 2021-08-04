@@ -1,8 +1,8 @@
 (define (problem letseat)
     (:domain letseat)
     (:objects
-        arm - robot
-        cupcake secondcupcake - cupcake
+        arm - bot
+        cupcake second-cupcake - cupcake
         table - location
         plate - location
         person - person
@@ -11,7 +11,7 @@
     (:init
         (on arm table)
         (on cupcake table)
-        (on secondcupcake table)
+        (on second-cupcake table)
         (arm-empty)
         (path table plate)
         (path plate table)
@@ -20,7 +20,7 @@
     (:goal
         (and
             (eaten person cupcake)
-            (eaten person secondcupcake)
+            (eaten person second-cupcake)
         )
     )
 )

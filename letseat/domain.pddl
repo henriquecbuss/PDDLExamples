@@ -5,21 +5,20 @@
     (:types
         location locatable eater - object
         bot cupcake - locatable
-        robot - bot
         person - eater
     )
 
     (:predicates
         (on ?obj - locatable ?loc - location)
-        (holding ?arm - locatable ?cupcake - locatable)
+        (holding ?arm - bot ?cupcake - cupcake)
         (arm-empty)
         (path ?location1 - location ?location2 - location)
         (used-to-eat ?loc - location)
-        (eaten ?person - eater ?cupcake - locatable)
+        (eaten ?person - eater ?cupcake - cupcake)
     )
 
     (:action pick-up
-        :parameters (?arm - bot ?cupcake - locatable ?loc - location)
+        :parameters (?arm - bot ?cupcake - cupcake ?loc - location)
         :precondition (and
             (on ?arm ?loc)
             (on ?cupcake ?loc)
@@ -33,7 +32,7 @@
     )
 
     (:action drop
-        :parameters (?arm - bot ?cupcake - locatable ?loc - location)
+        :parameters (?arm - bot ?cupcake - cupcake ?loc - location)
         :precondition (and
             (on ?arm ?loc)
             (holding ?arm ?cupcake)
@@ -58,7 +57,7 @@
     )
 
     (:action eat
-        :parameters (?person - eater ?cupcake - locatable ?loc - location)
+        :parameters (?person - eater ?cupcake - cupcake ?loc - location)
         :precondition (and
             (on ?cupcake ?loc)
             (used-to-eat ?loc))
